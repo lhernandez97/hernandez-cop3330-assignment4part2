@@ -1,0 +1,88 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class App
+class ToDoListController
+class ToDoList
+class Item
+class Print
+class ExternalStorage
+
+App <|-- ToDoList1.fxml
+ToDoListController <|-- Item
+ToDoListController <|-- Print
+ToDoListController <|-- ToDoList
+ToDoListController <|-- ExternalStorage
+Item <|-- Print
+Item <|-- ExternalStorage
+
+class App extends Application {
+    start(stage : Stage)
+    main(args : String[])
+}
+
+class ToDoListController implements Initializable {
+todo : ToDoList
+print : Print
+es : ExternalStorage
+list : ObservableList<Item>
+-due_date : DatePicker
+-new_duedate : DatePicker
+-desc : TextField
+-d_index : TextField
+-e_index : TextField
+-new_desc : TextField
+-new_status : TextField
+-label1 : Label
+-label2 : Label
+-listview : ListView<Item>
+-loadview : ListView<String>
+
+#addItem() : void
+#deleteItem() : void
+#clearAll() : void
+#editItem() : void
+#displayComplete() : void
+#displayAll() : void
+#displayIncomplete() : void
+#saveItems() : void
+#loadItems() : void
+#resetAdd() : void
+#resetDelete() : void
+#resetEdit() : void
+#initialize(location : URL, resources : ResourcesBundle) : void <<override>>
+
+}
+
+class ToDoList {
+    add(list : ObservableList<Item>, view : ListView<Item>, desc : TextField, due_date : DatePicker, label : Label) : void
+    removeItem(list : ObservableList<Item>, view : ListView<Item>, index : int) : void
+    clearList(list : ObservableList<Item>, view : ListView<Item>) : void
+    edit(list : ObservableList<Item>, view : ListView<Item>, nd : TextField, index : TextField, ndd : DatePicker, label : Label) : void
+}
+
+class Item {
+    -desc : String
+    -due_date : LocalDate
+    -comp : boolean
+    Item(desc : String, due_date : LocalDate, comp : boolean)
+    getComp() : boolean
+    getDesc() : String
+    setDueDate(LocalDate due_date) : void
+    setDesc(desc : String) : void
+    setComp(comp : boolean) : void
+    toString() : void <<override>>
+}
+
+class Print {
+    displayAll(list : ObservableList<Item>, view : ListView<Item>) : void
+    displayOnlyCompleted(list : ObservableList<Item, view : ListView<Item>) : void
+    displayOnlyIncomplete(list : ObservableList<Item>, view : ListView<Item>) : void
+}
+
+class ExternalStorage {
+    saveList(list : ObservableList<Item>) : void
+    loadList(view : ListView<String>) : void
+}
+
+@enduml

@@ -1,0 +1,62 @@
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<SplitPane dividerPositions="0.5075301204819277" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+           minWidth="-Infinity" orientation="VERTICAL" prefHeight="544.0" prefWidth="733.0"
+           fx:controller="ucf.assignments.ToDoListController" xmlns:fx="http://javafx.com/fxml">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="598.0">
+            <children>
+                <Button layoutX="11.0" layoutY="7.0" mnemonicParsing="false" onAction="#addItem" text="Add Item"/>
+                <DatePicker fx:id="due_date" layoutX="93.0" layoutY="7.0"/>
+                <TextField fx:id="desc" layoutX="296.0" layoutY="7.0" prefHeight="26.0" prefWidth="270.0" promptText="Item Description"/>
+                <Button layoutX="11.0" layoutY="42.0" mnemonicParsing="false" onAction="#deleteItem" text="Remove Item"/>
+                <Button layoutX="252.0" layoutY="41.0" mnemonicParsing="false" onAction="#clearAll" text="Clear List"/>
+                <Button layoutX="12.0" layoutY="87.0" mnemonicParsing="false" onAction="#editItem" text="Edit Item"/>
+                <Button layoutX="329.0" layoutY="183.0" mnemonicParsing="false" onAction="#displayComplete" text="Display Complete Items"/>
+                <Button layoutX="200.0" layoutY="183.0" mnemonicParsing="false" onAction="#displayAll" text="Display All Items"/>
+                <Button layoutX="491.0" layoutY="183.0" mnemonicParsing="false" onAction="#displayIncomplete" text="Display Incomplete Items"/>
+                <Button layoutX="268.0" layoutY="232.0" mnemonicParsing="false" onAction="#saveItems" text="Save Items to External Storage"/>
+                <Button layoutX="469.0" layoutY="232.0" mnemonicParsing="false" onAction="#loadItems" text="Load Items From External Storage"/>
+                <TextField fx:id="d_index" layoutX="107.0" layoutY="41.0" prefHeight="26.0" prefWidth="120.0" promptText="# of Item to Delete"/>
+                <TextField fx:id="e_index" layoutX="86.0" layoutY="86.0" prefHeight="26.0" prefWidth="104.0" promptText="# of Item to Edit"/>
+                <DatePicker fx:id="new_duedate" layoutX="196.0" layoutY="87.0"/>
+                <Text fill="#0b5ce3" layoutX="39.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="External Storage Options">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+                <Separator layoutX="249.0" layoutY="226.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="0.0"/>
+                <Text fill="#e40b0b" layoutX="44.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display Options">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+                <Separator layoutX="187.0" layoutY="176.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0"/>
+                <TextField fx:id="new_desc" layoutX="392.0" layoutY="86.0" prefHeight="26.0" prefWidth="197.0" promptText="New Description"/>
+                <Separator layoutX="14.0" layoutY="76.0" prefHeight="2.0" prefWidth="710.0"/>
+                <Separator layoutX="14.0" layoutY="175.0" prefHeight="3.0" prefWidth="710.0"/>
+                <Text fill="#1db944" layoutX="14.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark The Item As Complete (1) Or Incomplete (2) ?"/>
+                <Separator layoutX="6.0" layoutY="223.0" prefHeight="3.0" prefWidth="710.0"/>
+                <TextField fx:id="new_status" layoutX="292.0" layoutY="131.0" prefHeight="26.0" prefWidth="354.0" promptText="Type '1' to make item complete, or '2' to make item incomplete"/>
+                <Label fx:id="label1" layoutX="329.0" layoutY="45.0" prefHeight="18.0" prefWidth="381.0" textFill="RED"/>
+                <Label fx:id="label2" layoutX="40.0" layoutY="113.0" prefHeight="18.0" prefWidth="194.0" textFill="RED"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <children>
+                <ListView fx:id="listview" layoutX="3.0" layoutY="26.0" prefHeight="324.0" prefWidth="354.0"/>
+                <ListView fx:id="loadview" layoutX="374.0" layoutY="26.0" prefHeight="324.0" prefWidth="354.0"/>
+                <Text fill="#18a49a" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To-Do List"/>
+                <Text fill="#c4235d" layoutX="384.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List Loaded From External Storage"/>
+            </children>
+        </AnchorPane>
+    </items>
+</SplitPane>
